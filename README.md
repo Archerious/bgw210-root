@@ -93,27 +93,12 @@ Credit: [devicelocksmith](https://www.devicelocksmith.com/2018/12/eap-tls-creden
 - Copy *mfg.dat*, unzip *cert.tar* to the same location as *mfg_dat_decode*.
 - Run *mfg_dat_decode*. You should get a file like this: *EAP-TLS_8021x_XXXX*.
 
-
 ## Miscellaneous
 
 ### Compile Entware packages from source
 Some useful links
 - [Compile-packages-from-sources](https://github.com/Entware/Entware/wiki/Compile-packages-from-sources)
 - [Compile-custom-programs-from-source](https://github.com/RMerl/asuswrt-merlin/wiki/Compile-custom-programs-from-source)
-
-### FAQ
-1. Q: **Slow Speed**: The speed doesn't reach to the speed that I subscribed to.    
-   A: Please make sure the NAT acceleration is enabled. (Web GUI -> Tools-> HW acceleration). If it says *incompatible with*, you need to turn off some services.
-
-
-### To-dos
-- [ ] Cross compile *wpa_supplicant*, so we don't need to install *Entware*.
-- [ ] Ask Merlin to update *wpa_supplicant*.
-- [ ] Try to use Openwrt/ddwrt to bypass AT&T's RG.
-- [ ] Write a doc for compiling Entware packages from the source.
-
-### Donation
-- Bitcoin: 18hUjgNARRKWXr7hG9n62pWscZ4862TL6Q
 
 [Back to menu](#menu)
 ## Credits & References
@@ -122,5 +107,6 @@ Some useful links
 - [nomotion](https://www.nomotion.net/blog/sharknatto/): NVG589 root exploit
 - [dslreports.com](https://www.dslreports.com/forum/uverse): A great forum with many useful information.
 - [jsolo1@dslreports.com](https://www.dslreports.com/profile/422016): Provides many helpful & useful suggestions.
+- [Streiw](https://www.reddit.com/r/ATT/comments/g59rwm/bgw210700_root_exploitbypass/): Creator of BGW210 Pastebin guide and discover of exploit and main hero of BGW210 root.
 
 [Back to menu](#menu)
