@@ -20,8 +20,7 @@ This method works to rip the 802.1x keys from BGW210.
 
 [Back to menu](#menu)
 ## Extract Certificates
-The certificates extracted from both NVG589 and NVG599 work. 
-- [BGW210](#bgw210)
+The certificates extracted from both NVG589 and BGW210 work fine from my tests.
 
 ### BGW210
 Once downgraded, go to http://192.168.1.254/cgi-bin/ipalloc.ha , type your device access code to login, and assign a static IP to your PC that you'll be executing the CURL commands from.
