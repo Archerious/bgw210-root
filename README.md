@@ -23,6 +23,19 @@ This method works to rip the 802.1x keys from BGW210.
 The certificates extracted from both NVG589 and BGW210 work fine from my tests.
 
 ### BGW210
+
+# Downgrade
+
+Download the signed 1.0.29 firmware, then go to http://192.168.1.254
+
+Click Diagnostics, then Update.
+
+You'll select 1.0.29.
+
+Give the gateway 3 minutes to restart since it's a POS.
+
+## Ripping Certs
+
 Once downgraded, go to http://192.168.1.254/cgi-bin/ipalloc.ha , type your device access code to login, and assign a static IP to your PC that you'll be executing the CURL commands from.
 
 I assigned my PC: 192.168.1.70 since that's what the RG's DHCP-Server had assigned it.
@@ -54,8 +67,9 @@ Once you're logged in via telnet, type ! and press enter to elevate to a root sh
 Now, type top and let the telnet terminal populate with the running processes of the RG.
 
 Once the top command displays all of the running process, look for a process labelled:   
+  ```
 /usr/bin/udpsvd -E 0 69 tftpd /lib/firmware
-
+  ```
 Press CTRL + C to break out of the top command.
 
 Type kill PID_number_of_udpsvd; 
