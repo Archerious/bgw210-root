@@ -19,12 +19,10 @@ This method works to rip the 802.1x keys from BGW210.
 - A BGW210
 
 [Back to menu](#menu)
-## Extract Certificates
-The certificates extracted from both NVG589 and BGW210 work fine from my tests.
+## Extract Certificates Tested
+The certificates extracted from both NVG589 and BGW210 work fine from my tests using Mikrotik's RB4011 and CCR2004 w/switch in front to remove VLAN0 802.1p tags that AT&T feels they MUST use.
 
-### BGW210
-
-# Downgrade
+### Downgrade
 
 Download the signed 1.0.29 firmware, then go to http://192.168.1.254
 
