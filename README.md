@@ -81,7 +81,6 @@ This kills the auto update script so that you can make changes, or copy your 802
   mount -o remount,rw /dev/ubi0 /  
   mount mtd:mfg -t jffs2 /mfg
   cp /mfg/mfg.dat /www/att/mfg.dat
-  mount mtd:mfg -t jffs2 /mfg
   Download: http://192.168.1.254/mfg.dat
   
   ## Next:
