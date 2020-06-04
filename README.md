@@ -81,14 +81,18 @@ This kills the auto update script so that you can make changes, or copy your 802
   mount -o remount,rw /dev/ubi0 /  
   mount mtd:mfg -t jffs2 /mfg
   cp /mfg/mfg.dat /www/att/mfg.dat
-  Download: http://192.168.1.254/mfg.dat
+  Download:
+  - http://192.168.1.254/mfg.dat
+  - mac user: curl http://192.168.1.254/mfg.dat -o mfg.dat
   
   ## Next:
   
   cd /tmp
   tar cf cert.tar /etc/rootcert/
   cp cert.tar /www/att/images
-  Download: http://192.168.1.254/images/cert.tar
+  Download:
+  - http://192.168.1.254/images/cert.tar
+  - mac user: curl http://192.168.1.254/cert.tar -o cert.tar
   ```
 - Reminder: Download http://192.168.1.254/mfg.dat and http://192.168.1.254/images/cert.tar to your **local** device.
 
