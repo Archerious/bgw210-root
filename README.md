@@ -127,7 +127,7 @@ You may right click and save link as from web browser:
   - [cert](http://192.168.1.254/images/cert.tar)
 
 If you're a mac user, you may use curl from your mac terminal:
-  - `curl http://192.168.1.254/cert.tar -o cert.tar`
+  - `curl http://192.168.1.254/images/cert.tar -o cert.tar`
 
 - Reminder: Download http://192.168.1.254/mfg.dat and http://192.168.1.254/images/cert.tar to your **local** device.
 
